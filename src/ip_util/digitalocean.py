@@ -4,9 +4,7 @@ import json
 from typing import List, Union
 import requests
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
+from . import config
 
 
 def binarize_ip(ip): 
@@ -48,9 +46,9 @@ def merge_into_ip_pool(ip, ip_pool, threshod_sites=10):
 
 
 class DigitalOcean:
-    __token__ = os.getenv('TOKEN')
+    __token__ = config.get('digitalocean', 'token')
     if not __token__:
-        raise ValueError('DigitalOcean token not found. Please set TOKEN in .env file.')
+        raise ValueError('DigitalOcean token not found. Please set "token" in digitalocean section of config.ini.')
     manager = Manager(token=__token__)
     firewall = manager.get_all_firewalls()[0]
     
