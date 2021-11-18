@@ -1,7 +1,9 @@
 from configparser import ConfigParser
-import os
+import os.path
+from .. import root_dir, package_root
 
-__config_file__ = 'config.ini'
+module_root = os.path.join(package_root, 'ip_util')
+__config_file__ = os.path.join(root_dir, 'config.ini')
 
 config = ConfigParser()
 

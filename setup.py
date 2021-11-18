@@ -11,7 +11,6 @@ setup(
     description="Personal utilities of FZQ.",
     author="fanzuquan",
     author_email="u201312526@alumni.hust.edu.cn",
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    packages=find_packages(include='utils'),
     install_requires = required_packages
 )

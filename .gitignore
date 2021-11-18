@@ -1,0 +1,6 @@
+util_env/*
+**/fzq_utils.egg-info/*
+**__pycache__
+.env*
+config.ini
+.DS_Store
