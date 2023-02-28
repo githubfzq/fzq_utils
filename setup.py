@@ -3,12 +3,13 @@ from setuptools import setup, find_packages
 required_packages = [
     "python-digitalocean",
     "configparser",
-    "Pillow"
+    "Pillow",
+    "bs4"
 ]
 
 setup(
     name="fzq_utils",
-    version="1.1",
+    version="1.2",
     description="Personal utilities of FZQ.",
     author="fanzuquan",
     author_email="u201312526@alumni.hust.edu.cn",
