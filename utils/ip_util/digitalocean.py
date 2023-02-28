@@ -1,10 +1,9 @@
-from digitalocean import Firewall, Manager, InboundRule
+from digitalocean import Manager, InboundRule, TokenError
 from digitalocean.baseapi import PUT
 import json
 from typing import List, Union
 import requests
-import os
-from . import config
+from ..config import get_digitalocean_token
 
 
 def binarize_ip(ip): 
@@ -45,12 +44,13 @@ def merge_into_ip_pool(ip, ip_pool, threshod_sites=10):
 
 
 
+__token__ = get_digitalocean_token()
 class DigitalOcean:
-    __token__ = config.get('digitalocean', 'token')
-    if not __token__:
-        raise ValueError('DigitalOcean token not found. Please set "token" in digitalocean section of config.ini.')
     manager = Manager(token=__token__)
-    firewall = manager.get_all_firewalls()[0]
+    try:
+        firewall = manager.get_all_firewalls()[0]
+    except TokenError as e:
+        print(e)
     
     def get_ssr_rules(self):
         return self.firewall.inbound_rules[-1].sources.addresses
