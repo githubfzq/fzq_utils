@@ -9,7 +9,7 @@ required_packages = [
 
 setup(
     name="fzq_utils",
-    version="1.2",
+    version="1.3",
     description="Personal utilities of FZQ.",
     author="fanzuquan",
     author_email="u201312526@alumni.hust.edu.cn",
